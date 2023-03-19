@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import za.co.bbd.pointscalculator.services.HealthyFoodsService;
 
 import za.co.bbd.pointscalculator.model.TestModel;
 import za.co.bbd.pointscalculator.service.testService;
