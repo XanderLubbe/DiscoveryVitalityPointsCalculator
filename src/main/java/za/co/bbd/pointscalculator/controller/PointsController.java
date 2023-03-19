@@ -4,9 +4,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import za.co.bbd.pointscalculator.services.HealthyFoodsService;
 
 import za.co.bbd.pointscalculator.model.TestModel;
+import za.co.bbd.pointscalculator.service.HealthyFoodsService;
 import za.co.bbd.pointscalculator.service.testService;
 
 @RestController
@@ -16,9 +16,9 @@ public class PointsController{
     private final HealthyFoodsService foodService;
     private final testService service;
 
-    PointsController(testService service, HealthyFoodsService foodSrvice ){
+    PointsController(testService service, HealthyFoodsService foodService ){
         this.service = service;
-        this.foodSrvice = foodSrvice;
+        this.foodService = foodService;
 
     }
 
