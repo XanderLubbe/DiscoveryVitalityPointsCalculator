@@ -1,7 +1,9 @@
 package za.co.bbd.pointscalculator.repository;
 
-import za.co.bbd.pointscalculator.model.HealthyFoods;
+import org.springframework.stereotype.Service;
 
+import za.co.bbd.pointscalculator.model.HealthyFoods;
+@Service
 public class PointsObjectRepository {
     public HealthyFoods findFoodPoints(boolean dietitianVisit, int healthyFoodPerMonth){
         int dietitianPoints = 0;

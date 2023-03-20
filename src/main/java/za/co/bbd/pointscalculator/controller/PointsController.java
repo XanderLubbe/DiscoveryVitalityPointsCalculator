@@ -1,12 +1,17 @@
 package za.co.bbd.pointscalculator.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import za.co.bbd.pointscalculator.services.HealthyFoodsService;
 
-import za.co.bbd.pointscalculator.model.TestModel;
+import za.co.bbd.pointscalculator.model.RequestFitness;
+import za.co.bbd.pointscalculator.model.RequestHealthChecks;
+import za.co.bbd.pointscalculator.model.RequestHealthyFoods;
+import za.co.bbd.pointscalculator.model.ResponsePoints;
+import za.co.bbd.pointscalculator.service.HealthyFoodsService;
 import za.co.bbd.pointscalculator.service.testService;
 
 @RestController
@@ -16,9 +21,9 @@ public class PointsController{
     private final HealthyFoodsService foodService;
     private final testService service;
 
-    PointsController(testService service, HealthyFoodsService foodSrvice ){
+    PointsController(testService service, HealthyFoodsService foodService ){
         this.service = service;
-        this.foodSrvice = foodSrvice;
+        this.foodService = foodService;
 
     }
 
@@ -27,11 +32,24 @@ public class PointsController{
 
         return foodService.findFoodPointsService(dietitianVisit, healthyFoodPerMonth);
     }
-
-    @GetMapping("/vitality/test")
-    TestModel getPoints(@RequestParam String activity){
-        return service.getPointsService(activity);
+    // this works by binding query params to objects 
+    @GetMapping("/testObject")
+    List<ResponsePoints> requestPoints(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
+        System.out.println(requestHealthyFoods.isVisitedDietician());
+        System.out.println(requestHealthyFoods.getHealthyFoodSpend());
+        System.out.println(requestHealthChecks.isFirstHIVTest());
+        System.out.println(requestHealthChecks.isBloodGlucose());
+        System.out.println(requestFitness.getCyclingRaceEventOption1());
+  
+        List<ResponsePoints> result = new ArrayList<ResponsePoints>();
+        result.add(service.getPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
+        return result;
     }
+
+    // @GetMapping("/vitality/test")
+    // TestModel getPoints(@RequestParam String activity){
+    //     return service.getPointsService(activity);
+    // }
 
     @GetMapping("/vitality/points")
     public String points(@RequestParam(value = "name", defaultValue = "13 591 points") String points) {

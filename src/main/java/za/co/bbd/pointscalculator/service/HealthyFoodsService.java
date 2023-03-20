@@ -1,4 +1,4 @@
-package za.co.bbd.pointscalculator.services;
+package za.co.bbd.pointscalculator.service;
 
 import org.springframework.stereotype.Service;
 import za.co.bbd.pointscalculator.model.HealthyFoods;
