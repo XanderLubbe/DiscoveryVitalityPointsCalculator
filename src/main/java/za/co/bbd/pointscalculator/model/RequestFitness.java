@@ -1,7 +1,9 @@
 package za.co.bbd.pointscalculator.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 public class RequestFitness {
     
@@ -17,21 +19,23 @@ public class RequestFitness {
     private int parkrun;
 
     // Race Events
-    private int walkingOrRunningRaceEventOption1;
-    private int walkingOrRunningRaceEventOption2;
-    private int walkingOrRunningRaceEventOption3;
-    private int walkingOrRunningRaceEventOption4;
-    private int swimmingRaceEventOption1;
-    private int swimmingRaceEventOption2;
-    private int swimmingRaceEventOption3;
-    private int swimmingRaceEventOption4;
-    private int cyclingRaceEventOption1;
-    private int cyclingRaceEventOption2;
-    private int cyclingRaceEventOption3;
-    private int cyclingRaceEventOption4;
+    private int walkingOrRunningRaceEventLevel1;
+    private int walkingOrRunningRaceEventLevel2;
+    private int walkingOrRunningRaceEventLevel3;
+    private int walkingOrRunningRaceEventLevel4;
 
-    public RequestFitness(int cyclingRaceEventOption1){
-        this.cyclingRaceEventOption1 = cyclingRaceEventOption1;
-    }
+    private int swimmingRaceEventLevel1;
+    private int swimmingRaceEventLevel2;
+    private int swimmingRaceEventLevel3;
+    private int swimmingRaceEventLevel4;
+
+    private int cyclingRaceEventLevel1;
+    private int cyclingRaceEventLevel2;
+    private int cyclingRaceEventLevel3;
+    private int cyclingRaceEventLevel4;
+
+    // public RequestFitness(int cyclingRaceEventLevel1){
+    //     this.cyclingRaceEventLevel1 = cyclingRaceEventLevel1;
+    // }
     
 }
