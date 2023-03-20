@@ -29,7 +29,7 @@ public class PointsController{
     }
 
     @GetMapping("/foodPoints")
-    int findFoodPoints(@RequestParam boolean dietitianVisit, int healthyFoodPerMonth) {
+    ResponsePoints findFoodPoints(@RequestParam boolean dietitianVisit, int healthyFoodPerMonth) {
 
         return foodService.findFoodPointsService(dietitianVisit, healthyFoodPerMonth);
     }
