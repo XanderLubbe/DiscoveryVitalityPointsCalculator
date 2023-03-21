@@ -50,7 +50,9 @@ public class PointsObjectRepository {
                                                 boolean weightAssesment,
                                                 boolean nonSmokersDeclaration){
 
+        // Discovery Logic Limits
         int HealthCheckLimit = 28000;
+        int mentalWellbeingLimit =2;
 
         
         // General
@@ -60,6 +62,9 @@ public class PointsObjectRepository {
         }
 
         int mentalWellbeingPoints = mentalWellbeing * 500; //int represents number of check done
+        if(mentalWellbeing>mentalWellbeingLimit){
+            System.err.println("More than" + mentalWellbeingLimit + "mentalWellbeing checks is not allowed");
+        }
 
         // Excercise
         int golfPlayedPoints =  golfPlayed * 100;
@@ -143,7 +148,10 @@ public class PointsObjectRepository {
             vitalityCheckPoints = 5000;
         }
         
-        
+        int totalHealthCheckPoints = vitalityAgePoints + mentalWellbeingPoints + golfPlayedPoints + fluVaccinePoints + initialHIVTestPoints + annualHIVTestPoints + papSmearPoints + mammogramPoints + colonoscopyPoints + dentalCheckPoints + glaucomaScreeningPoints + managingChronicConditionPoints + vitalityCheckPoints;
+        if (totalHealthCheckPoints>HealthCheckLimit){
+            System.err.println("Total points from healthCheck("+ totalHealthCheckPoints +") are above the(" +HealthCheckLimit+ ") limit!");
+        }
 
         return new HealthCheck( vitalityAgePoints,
                                 mentalWellbeingPoints,
