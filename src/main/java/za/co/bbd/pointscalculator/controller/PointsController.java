@@ -25,7 +25,6 @@ public class PointsController{
     PointsController(AggregatorService service, HealthyFoodsService foodService ){
         this.service = service;
         this.foodService = foodService;
-
     }
 
     @GetMapping("/foodPoints")
@@ -33,6 +32,7 @@ public class PointsController{
 
         return foodService.findFoodPointsService(dietitianVisit, healthyFoodPerMonth);
     }
+
     // this works by binding query params to objects 
     @GetMapping("/testObject")
     List<ResponsePoints> requestPoints(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
@@ -43,6 +43,7 @@ public class PointsController{
   
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
+
         return result;
     }
 
@@ -51,6 +52,7 @@ public class PointsController{
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
         System.out.println(String.format("Congratulations you have %s points!", result)); 
+
         return result;
     }
 
@@ -58,6 +60,7 @@ public class PointsController{
     String bands(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
         String result = (service.getVitalityBandService(requestHealthyFoods, requestHealthChecks, requestFitness));
         System.out.println(String.format("Hello you are on the %s band!", result)); 
+
         return result;
     }
 
