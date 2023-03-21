@@ -12,13 +12,14 @@ public class AggregatorService {
 
     private HealthyFoodsService healthyFoodService;
     // private HealthAssesmentService healthAssesmentService;
-    // private FitnessService fitnessService;
+    private FitnessService fitnessService;
     private VitalityBandService vitalityBandService;
 
 
-    AggregatorService(HealthyFoodsService healthyFoodService, VitalityBandService vitalityBandService){
+    AggregatorService(HealthyFoodsService healthyFoodService, VitalityBandService vitalityBandService, FitnessService fitnessService){
         this.healthyFoodService = healthyFoodService;
         this.vitalityBandService = vitalityBandService;
+        this.fitnessService = fitnessService;
     }
 
     public String getVitalityBandService(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness) {
