@@ -3,6 +3,7 @@ package za.co.bbd.pointscalculator.repository;
 import org.springframework.stereotype.Service;
 
 import za.co.bbd.pointscalculator.model.HealthyFoods;
+import za.co.bbd.pointscalculator.model.RequestHealthChecks;
 @Service
 public class PointsObjectRepository {
     public HealthyFoods findFoodPoints(boolean dietitianVisit, int healthyFoodPerMonth){
