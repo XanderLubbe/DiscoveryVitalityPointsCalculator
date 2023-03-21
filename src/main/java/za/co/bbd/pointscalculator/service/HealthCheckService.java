@@ -81,6 +81,7 @@ public class HealthCheckService {
                             returned_vitalityCheckPoints,
                             returned_aboveLimitFix};
         
+        // Debugging Stuff
         JSONObject jsonObj = new JSONObject();
         jsonObj.put("returned_vitalityAgePoints", returned_vitalityAgePoints);
         jsonObj.put("returned_mentalWellbeing", returned_mentalWellbeing);
@@ -97,7 +98,6 @@ public class HealthCheckService {
         jsonObj.put("returned_vitalityCheckPoints", returned_vitalityCheckPoints);
         jsonObj.put("returned_aboveLimitFix", returned_aboveLimitFix);
         
-
         System.out.println(jsonObj.toString(4));
 
 
