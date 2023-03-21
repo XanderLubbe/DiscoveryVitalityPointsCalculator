@@ -80,25 +80,6 @@ public class HealthCheckService {
                             returned_managingChronicCondition ,
                             returned_vitalityCheckPoints,
                             returned_aboveLimitFix};
-        
-        // Debugging Stuff
-        JSONObject jsonObj = new JSONObject();
-        jsonObj.put("returned_vitalityAgePoints", returned_vitalityAgePoints);
-        jsonObj.put("returned_mentalWellbeing", returned_mentalWellbeing);
-        jsonObj.put("returned_golfPlayed", returned_golfPlayed);
-        jsonObj.put("returned_fluVaccine", returned_fluVaccine);
-        jsonObj.put("returned_initialHIVTest", returned_initialHIVTest);
-        jsonObj.put("returned_annualHIVTest", returned_annualHIVTest);
-        jsonObj.put("returned_papSmear", returned_papSmear);
-        jsonObj.put("returned_mammogram", returned_mammogram);
-        jsonObj.put("returned_colonoscopy", returned_colonoscopy);
-        jsonObj.put("returned_dentalCheck", returned_dentalCheck);
-        jsonObj.put("returned_glaucomaScreening", returned_glaucomaScreening);
-        jsonObj.put("returned_managingChronicCondition", returned_managingChronicCondition);
-        jsonObj.put("returned_vitalityCheckPoints", returned_vitalityCheckPoints);
-        jsonObj.put("returned_aboveLimitFix", returned_aboveLimitFix);
-        
-        System.out.println(jsonObj.toString(4));
 
 
         return new ResponsePoints(  returned_vitalityAgePoints +
