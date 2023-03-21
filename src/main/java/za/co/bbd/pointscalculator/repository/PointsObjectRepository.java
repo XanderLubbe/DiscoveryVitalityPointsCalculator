@@ -44,31 +44,120 @@ public class PointsObjectRepository {
                                                 boolean dentalCheck,
                                                 boolean glaucomaScreening,
                                                 boolean managingChronicCondition,
-                                                boolean bloodPressue,
+                                                boolean bloodPressure,
                                                 boolean bloodGlucose,
                                                 boolean cholestrol,
                                                 boolean weightAssesment,
                                                 boolean nonSmokersDeclaration){
 
-                                                    
-        return new HealthCheck(
-            vitalityAge,
-            mentalWellbeing,
-            golfPlayed,
-            fluVaccine,
-            initialHIVTest,
-            annualHIVTest,
-            papSmear,
-            mammogram,
-            colonoscopy,
-            dentalCheck,
-            glaucomaScreening,
-            managingChronicCondition,
-            bloodPressue,
-            bloodGlucose,
-            cholestrol,
-            weightAssesment,
-            nonSmokersDeclaration
+        int HealthCheckLimit = 28000;
+
+        
+        // General
+        int vitalityAgePoints = 0;
+        if (vitalityAge){
+            vitalityAgePoints= 1500;
+        }
+
+        int mentalWellbeingPoints = mentalWellbeing * 500; //int represents number of check done
+
+        // Excercise
+        int golfPlayedPoints =  golfPlayed * 100;
+        
+        // Health Checks
+        int fluVaccinePoints = 0;
+        if (fluVaccine) {
+            fluVaccinePoints = 1000;
+        }
+
+        int initialHIVTestPoints = 0;
+        if (initialHIVTest) {
+            initialHIVTestPoints = 7500;
+        }
+
+        int annualHIVTestPoints = 0;
+        if (annualHIVTest) {
+            annualHIVTestPoints = 1000;
+        }
+
+        int papSmearPoints = 0;
+        if (papSmear) {
+            papSmearPoints = 2500;
+        }
+        
+        int mammogramPoints = 0;
+        if (mammogram){
+            mammogramPoints =2500;
+        }
+        
+        int colonoscopyPoints = 0;
+        if (colonoscopy){
+            colonoscopyPoints = 2500;
+        }
+        
+        int dentalCheckPoints = 0;
+        if (dentalCheck) {
+            dentalCheckPoints = 1000;
+        }
+        
+        int glaucomaScreeningPoints = 0;
+        if (glaucomaScreening){
+            glaucomaScreeningPoints = 2500;
+        }
+         
+        int managingChronicConditionPoints = 0;
+        if (managingChronicCondition){
+            managingChronicConditionPoints = 2500;
+        }
+        
+
+        // Vitality Checks
+        int vitalityCheckPoints; 
+        
+        int numHighRisk = 0;
+        if (bloodPressure) {
+            numHighRisk += 1;
+        }
+        if (bloodGlucose) {
+            numHighRisk += 1;
+        }
+        if (cholestrol) {
+            numHighRisk += 1;
+        }
+        if (weightAssesment) {
+            numHighRisk += 1;
+        }
+        if (nonSmokersDeclaration) {
+            numHighRisk += 1;
+        }
+
+        
+        // Vitality Checks Logic
+        if (numHighRisk==0){
+            vitalityCheckPoints =22500;
+        }
+        else if (numHighRisk==1){
+            vitalityCheckPoints = 12500;
+        }
+        else {
+            vitalityCheckPoints = 5000;
+        }
+        
+        
+
+        return new HealthCheck( vitalityAgePoints,
+                                mentalWellbeingPoints,
+                                golfPlayedPoints,
+                                fluVaccinePoints,
+                                initialHIVTestPoints,
+                                annualHIVTestPoints,
+                                papSmearPoints,
+                                mammogramPoints,
+                                colonoscopyPoints,
+                                dentalCheckPoints,
+                                glaucomaScreeningPoints,
+                                managingChronicConditionPoints,
+                                vitalityCheckPoints
         );
     }
 }
