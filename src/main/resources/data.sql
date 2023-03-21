@@ -1,6 +1,6 @@
-
-INSERT INTO countries (id, name) VALUES (1, 'USA');
-INSERT INTO countries (id, name) VALUES (2, 'France');
-INSERT INTO countries (id, name) VALUES (3, 'Brazil');
-INSERT INTO countries (id, name) VALUES (4, 'Italy');
-INSERT INTO countries (id, name) VALUES (5, 'Canada');
+--test inserts for the table
+INSERT INTO VITALITY_POINTS (ID, ACTIVITY, POINTS) VALUES (1, 'walking', 50);
+INSERT INTO VITALITY_POINTS (ID, ACTIVITY, POINTS) VALUES (2, 'running', 100);
+INSERT INTO VITALITY_POINTS (ID, ACTIVITY, POINTS) VALUES (3, 'dentistCheckup', 100);
+INSERT INTO VITALITY_POINTS (ID, ACTIVITY, POINTS) VALUES (4, 'dieticianVisit', 100);
+INSERT INTO VITALITY_POINTS (ID, ACTIVITY, POINTS) VALUES (5, 'Other', 100);

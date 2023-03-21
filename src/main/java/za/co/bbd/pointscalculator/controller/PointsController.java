@@ -33,25 +33,11 @@ public class PointsController{
         return foodService.findFoodPointsService(dietitianVisit, healthyFoodPerMonth);
     }
 
-    // this works by binding query params to objects 
-    @GetMapping("/testObject")
-    List<ResponsePoints> requestPoints(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
-        System.out.println(requestHealthyFoods.isVisitedDietician());
-        System.out.println(requestHealthyFoods.getHealthyFoodSpend());
-        System.out.println(requestHealthChecks.isBloodGlucose());
-        System.out.println(requestFitness.getCyclingRaceEventLevel1());
-  
-        List<ResponsePoints> result = new ArrayList<ResponsePoints>();
-        result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
-
-        return result;
-    }
-
     @GetMapping("/points")
     List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
-        System.out.println(String.format("Congratulations you have %s points!", result)); 
+        System.out.println(String.format("Congratulations you have %s points!", result));
 
         return result;
     }
