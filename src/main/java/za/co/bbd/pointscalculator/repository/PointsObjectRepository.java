@@ -52,6 +52,7 @@ public class PointsObjectRepository {
 
         // Discovery Logic Limits
         int HealthCheckLimit = 28000;
+        int aboveLimitFix = 0;
         int mentalWellbeingLimit =2;
 
         
@@ -120,19 +121,19 @@ public class PointsObjectRepository {
         int vitalityCheckPoints; 
         
         int numHighRisk = 0;
-        if (bloodPressure) {
+        if (!bloodPressure) {
             numHighRisk += 1;
         }
-        if (bloodGlucose) {
+        if (!bloodGlucose) {
             numHighRisk += 1;
         }
-        if (cholestrol) {
+        if (!cholestrol) {
             numHighRisk += 1;
         }
-        if (weightAssesment) {
+        if (!weightAssesment) {
             numHighRisk += 1;
         }
-        if (nonSmokersDeclaration) {
+        if (!nonSmokersDeclaration) {
             numHighRisk += 1;
         }
 
@@ -149,8 +150,23 @@ public class PointsObjectRepository {
         }
         
         int totalHealthCheckPoints = vitalityAgePoints + mentalWellbeingPoints + golfPlayedPoints + fluVaccinePoints + initialHIVTestPoints + annualHIVTestPoints + papSmearPoints + mammogramPoints + colonoscopyPoints + dentalCheckPoints + glaucomaScreeningPoints + managingChronicConditionPoints + vitalityCheckPoints;
+        //Rudamentary fix for going above limit. Will lose detail.
         if (totalHealthCheckPoints>HealthCheckLimit){
             System.err.println("Total points from healthCheck("+ totalHealthCheckPoints +") are above the(" +HealthCheckLimit+ ") limit!");
+            aboveLimitFix = HealthCheckLimit;
+            vitalityAgePoints = 0;
+            mentalWellbeingPoints = 0;
+            golfPlayedPoints = 0;
+            fluVaccinePoints = 0;
+            initialHIVTestPoints = 0;
+            annualHIVTestPoints = 0;
+            papSmearPoints = 0;
+            mammogramPoints = 0;
+            colonoscopyPoints = 0;
+            dentalCheckPoints = 0;
+            glaucomaScreeningPoints = 0;
+            managingChronicConditionPoints = 0;
+            vitalityCheckPoints = 0;
         }
 
         return new HealthCheck( vitalityAgePoints,
@@ -165,7 +181,8 @@ public class PointsObjectRepository {
                                 dentalCheckPoints,
                                 glaucomaScreeningPoints,
                                 managingChronicConditionPoints,
-                                vitalityCheckPoints
+                                vitalityCheckPoints,
+                                aboveLimitFix
         );
     }
 }

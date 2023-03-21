@@ -12,7 +12,8 @@ public record HealthCheck(  int vitalityAgePoints,
                             int dentalCheckPoints,
                             int glaucomaScreeningPoints,
                             int managingChronicConditionPoints,
-                            int vitalityCheckPoints) 
+                            int vitalityCheckPoints,
+                            int aboveLimitFix) 
 {
     
 }

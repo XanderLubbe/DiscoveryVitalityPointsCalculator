@@ -1,4 +1,5 @@
 package za.co.bbd.pointscalculator.service;
+import org.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 import za.co.bbd.pointscalculator.model.ResponsePoints;
@@ -63,6 +64,42 @@ public class HealthCheckService {
         int returned_glaucomaScreening = repoHealthCheck.glaucomaScreeningPoints();
         int returned_managingChronicCondition = repoHealthCheck.managingChronicConditionPoints();
         int returned_vitalityCheckPoints = repoHealthCheck.vitalityCheckPoints();
+        int returned_aboveLimitFix = repoHealthCheck.aboveLimitFix();
+
+        int[] totalPoints =   {returned_vitalityAgePoints ,
+                            returned_mentalWellbeing ,
+                            returned_golfPlayed ,
+                            returned_fluVaccine ,
+                            returned_initialHIVTest ,
+                            returned_annualHIVTest ,
+                            returned_papSmear ,
+                            returned_mammogram ,
+                            returned_colonoscopy ,
+                            returned_dentalCheck ,
+                            returned_glaucomaScreening ,
+                            returned_managingChronicCondition ,
+                            returned_vitalityCheckPoints,
+                            returned_aboveLimitFix};
+        
+        JSONObject jsonObj = new JSONObject();
+        jsonObj.put("returned_vitalityAgePoints", returned_vitalityAgePoints);
+        jsonObj.put("returned_mentalWellbeing", returned_mentalWellbeing);
+        jsonObj.put("returned_golfPlayed", returned_golfPlayed);
+        jsonObj.put("returned_fluVaccine", returned_fluVaccine);
+        jsonObj.put("returned_initialHIVTest", returned_initialHIVTest);
+        jsonObj.put("returned_annualHIVTest", returned_annualHIVTest);
+        jsonObj.put("returned_papSmear", returned_papSmear);
+        jsonObj.put("returned_mammogram", returned_mammogram);
+        jsonObj.put("returned_colonoscopy", returned_colonoscopy);
+        jsonObj.put("returned_dentalCheck", returned_dentalCheck);
+        jsonObj.put("returned_glaucomaScreening", returned_glaucomaScreening);
+        jsonObj.put("returned_managingChronicCondition", returned_managingChronicCondition);
+        jsonObj.put("returned_vitalityCheckPoints", returned_vitalityCheckPoints);
+        jsonObj.put("returned_aboveLimitFix", returned_aboveLimitFix);
+        
+
+        System.out.println(jsonObj.toString(4));
+
 
         return new ResponsePoints(  returned_vitalityAgePoints +
                                     returned_mentalWellbeing +
@@ -76,7 +113,8 @@ public class HealthCheckService {
                                     returned_dentalCheck +
                                     returned_glaucomaScreening +
                                     returned_managingChronicCondition +
-                                    returned_vitalityCheckPoints
+                                    returned_vitalityCheckPoints+
+                                    returned_aboveLimitFix
         );
     }
 
