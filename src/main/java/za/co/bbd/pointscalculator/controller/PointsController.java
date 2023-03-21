@@ -12,19 +12,24 @@ import za.co.bbd.pointscalculator.model.ResponsePoints;
 import za.co.bbd.pointscalculator.service.FitnessService;
 import za.co.bbd.pointscalculator.service.HealthyFoodsService;
 import za.co.bbd.pointscalculator.service.AggregatorService;
+import za.co.bbd.pointscalculator.service.HealthCheckService;
 
 @RestController
 @RequestMapping("/vitality")
 public class PointsController{
 
+    private final HealthCheckService healthService;
     private final HealthyFoodsService foodService;
     private final AggregatorService service;
     private final FitnessService fitnessService;
 
-    PointsController(AggregatorService service, HealthyFoodsService foodService, FitnessService fitnessService){
+    PointsController(AggregatorService service, HealthyFoodsService foodService, FitnessService fitnessService, HealthCheckService healthService){
         this.service = service;
         this.foodService = foodService;
         this.fitnessService = fitnessService;
+        this.healthService = healthService;
+
+
     }
 
     @GetMapping("/foodPoints")
@@ -83,6 +88,47 @@ public class PointsController{
     ResponsePoints getFitnessPoints(@RequestBody RequestFitness requestFitness){
         return fitnessService.calculateFitnessPoints(requestFitness);
     }
+
+
+    //To test HealthCheck service
+    @GetMapping("/healthCheck")
+    ResponsePoints findHealthPoints(    @RequestParam 
+                                        boolean vitalityAge,
+                                        int mentalWellbeing,
+                                        int golfPlayed,
+                                        boolean fluVaccine,
+                                        boolean initialHIVTest,
+                                        boolean annualHIVTest,
+                                        boolean papSmear,
+                                        boolean mammogram,
+                                        boolean colonoscopy,
+                                        boolean dentalCheck,
+                                        boolean glaucomaScreening,
+                                        boolean managingChronicCondition,
+                                        boolean bloodPressure,
+                                        boolean bloodGlucose,
+                                        boolean cholestrol,
+                                        boolean weightAssesment,
+                                        boolean nonSmokersDeclaration ){
+        return healthService.findHealthCheckPointsService(  vitalityAge,
+                                                             mentalWellbeing,
+                                                             golfPlayed,
+                                                             fluVaccine,
+                                                             initialHIVTest,
+                                                             annualHIVTest,
+                                                             papSmear,
+                                                             mammogram,
+                                                             colonoscopy,
+                                                             dentalCheck,
+                                                             glaucomaScreening,
+                                                             managingChronicCondition,
+                                                             bloodPressure,
+                                                             bloodGlucose,
+                                                             cholestrol,
+                                                             weightAssesment,
+                                                             nonSmokersDeclaration);
+    }
+
 
     // this works by binding query params to objects 
     @GetMapping("/testObject")
