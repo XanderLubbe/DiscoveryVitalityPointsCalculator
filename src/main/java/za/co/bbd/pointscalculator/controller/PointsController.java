@@ -13,16 +13,16 @@ import za.co.bbd.pointscalculator.model.RequestHealthChecks;
 import za.co.bbd.pointscalculator.model.RequestHealthyFoods;
 import za.co.bbd.pointscalculator.model.ResponsePoints;
 import za.co.bbd.pointscalculator.service.HealthyFoodsService;
-import za.co.bbd.pointscalculator.service.testService;
+import za.co.bbd.pointscalculator.service.AggregatorService;
 
 @RestController
 @RequestMapping("/vitality")
 public class PointsController{
 
     private final HealthyFoodsService foodService;
-    private final testService service;
+    private final AggregatorService service;
 
-    PointsController(testService service, HealthyFoodsService foodService ){
+    PointsController(AggregatorService service, HealthyFoodsService foodService ){
         this.service = service;
         this.foodService = foodService;
 
@@ -42,22 +42,21 @@ public class PointsController{
         System.out.println(requestFitness.getCyclingRaceEventLevel1());
   
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
-        result.add(service.getPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
+        result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
         return result;
     }
 
     @GetMapping("/points")
     List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
-        result.add(service.getPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
+        result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
         System.out.println(String.format("Congratulations you have %s points!", result)); 
         return result;
     }
 
     @GetMapping("/bands")
-    List<ResponsePoints> bands(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
-        List<ResponsePoints> result = new ArrayList<ResponsePoints>();
-        result.add(service.getPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
+    String bands(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
+        String result = (service.getVitalityBandService(requestHealthyFoods, requestHealthChecks, requestFitness));
         System.out.println(String.format("Hello you are on the %s band!", result)); 
         return result;
     }
