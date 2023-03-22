@@ -11,15 +11,16 @@ import za.co.bbd.pointscalculator.model.ResponsePoints;
 public class AggregatorService {
 
     private HealthyFoodsService healthyFoodService;
-    // private HealthAssesmentService healthAssesmentService;
+     private HealthCheckService healthCheckService;
     private FitnessService fitnessService;
     private VitalityBandService vitalityBandService;
 
 
-    AggregatorService(HealthyFoodsService healthyFoodService, VitalityBandService vitalityBandService, FitnessService fitnessService){
+    AggregatorService(HealthyFoodsService healthyFoodService, VitalityBandService vitalityBandService, FitnessService fitnessService, HealthCheckService healthCheckService){
         this.healthyFoodService = healthyFoodService;
         this.vitalityBandService = vitalityBandService;
         this.fitnessService = fitnessService;
+        this.healthCheckService = healthCheckService;
     }
 
     public String getVitalityBandService(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness) {
@@ -33,7 +34,9 @@ public class AggregatorService {
 
     public ResponsePoints getTotalVitalityPointsService(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
         ResponsePoints foodPoints = healthyFoodService.findFoodPointsService(requestHealthyFoods.isVisitedDietician(), requestHealthyFoods.getHealthyFoodSpend());
-        int result = foodPoints.getPoints();
+        ResponsePoints fitnessPoints = fitnessService.calculateFitnessPoints(requestFitness) ;
+//        ResponsePoints healthCheckPoints = healthCheckService.findHealthCheckPointsService();
+        int result = foodPoints.getPoints() + fitnessPoints.getPoints();
 
         return new ResponsePoints(result);
     }
