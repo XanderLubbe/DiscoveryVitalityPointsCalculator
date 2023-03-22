@@ -33,9 +33,9 @@ public class PointsController{
     }
 
     @GetMapping("/foodPoints")
-    ResponsePoints findFoodPoints(@RequestParam boolean dietitianVisit, int healthyFoodPerMonth) {
+    ResponsePoints findFoodPoints(@RequestParam RequestHealthyFoods healthyFoodsRequest) {
 
-        return foodService.findFoodPointsService(dietitianVisit, healthyFoodPerMonth);
+        return foodService.findFoodPointsService(healthyFoodsRequest);
     }
 
     @GetMapping("/fitnessPoints")
