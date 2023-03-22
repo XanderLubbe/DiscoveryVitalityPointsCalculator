@@ -26,7 +26,7 @@ public class RequestHealthChecks {
     private boolean managingChronicCondition;
 
     // Vitality Health Check (check if all are in range)
-    private boolean bloodPressue;
+    private boolean bloodPressure;
 	private boolean bloodGlucose;
 	private boolean cholestrol;
 	private boolean weightAssesment;
