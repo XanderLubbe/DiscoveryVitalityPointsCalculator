@@ -20,9 +20,9 @@ public class AggregatorService {
             VitalityBandService vitalityBandService, FitnessService fitnessService,
             HealthCheckService healthCheckService) {
         this.healthyFoodService = healthyFoodService;
-        this.vitalityBandService = vitalityBandService;
         this.fitnessService = fitnessService;
-         this.healthCheckService = healthCheckService;
+        this.healthCheckService = healthCheckService;
+        this.vitalityBandService = vitalityBandService;
         this.repository = repository;
     }
 
@@ -37,11 +37,7 @@ public class AggregatorService {
 
     }
 
-    public ResponsePoints getTotalVitalityPointsService(RequestHealthyFoods requestHealthyFoods,
-            RequestHealthChecks requestHealthChecks, RequestFitness requestFitness) {
-        List<FitnessPointsDTO> repoFitnessPointsDTO = repository.getAllPoints();
-        // List<PointsDTO> databaseResponse = PointsRepository
-        System.out.println(repoFitnessPointsDTO.get(2).getActivity());
+    public ResponsePoints getTotalVitalityPointsService(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
         ResponsePoints foodPoints = healthyFoodService.findFoodPointsService(requestHealthyFoods);
         ResponsePoints fitnessPoints = fitnessService.calculateFitnessPoints(requestFitness);
         ResponsePoints healthCheckPoints = healthCheckService.findHealthCheckPointsService(requestHealthChecks);
