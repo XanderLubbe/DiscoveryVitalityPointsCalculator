@@ -22,7 +22,7 @@ public class AggregatorService {
         this.healthyFoodService = healthyFoodService;
         this.vitalityBandService = vitalityBandService;
         this.fitnessService = fitnessService;
-        // this.healthCheckService = healthCheckService;
+         this.healthCheckService = healthCheckService;
         this.repository = repository;
     }
 
