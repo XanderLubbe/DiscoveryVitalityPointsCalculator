@@ -38,7 +38,7 @@ public class PointsController{
         return foodService.findFoodPointsService(healthyFoodsRequest);
     }
 
-    @GetMapping("/fitness")
+    @GetMapping("/points/fitness")
     ResponsePoints getFitnessPoints( RequestFitness requestFitness){
         return fitnessService.calculateFitnessPoints(requestFitness);
     }

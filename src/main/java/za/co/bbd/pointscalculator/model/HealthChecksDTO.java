@@ -6,9 +6,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
 
-@Entity(name="VITALITY_BANDS")
+@Entity(name="HEALTH_CHECKS")
 @Getter
-public class VitalityBandsDTO {
+// change all of these to suit your needs
+public class HealthChecksDTO {
     @Id @GeneratedValue(strategy = GenerationType.AUTO) private Long Id;
     private int lowerLimit;
     private int upperLimit;
