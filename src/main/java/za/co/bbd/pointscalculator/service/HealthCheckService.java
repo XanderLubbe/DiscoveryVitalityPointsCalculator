@@ -24,7 +24,7 @@ public class HealthCheckService {
     public ResponsePoints findHealthCheckPointsService(RequestHealthChecks requestHealthChecks) {
 
         // Gets points from Health Check Repo for each check
-        int vitalityAgePoints = healthCheckPointsRepository.getCheckPoints("Vitality_Age").getPoints();
+        int vitalityAgePoints = healthCheckPointsRepository.getCheckPoints("VitalityAge").getPoints();
         int mentalWellbeingPoints = healthCheckPointsRepository.getCheckPoints("mentalWellbeing").getPoints();
         int golfPlayedPoints = healthCheckPointsRepository.getCheckPoints("golfPlayed").getPoints();
         int fluVaccinePoints = healthCheckPointsRepository.getCheckPoints("fluVaccine").getPoints();
