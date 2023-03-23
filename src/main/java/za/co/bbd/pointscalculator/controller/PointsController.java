@@ -13,7 +13,6 @@ import za.co.bbd.pointscalculator.service.FitnessService;
 import za.co.bbd.pointscalculator.service.HealthyFoodsService;
 import za.co.bbd.pointscalculator.service.AggregatorService;
 import za.co.bbd.pointscalculator.service.HealthCheckService;
-import za.co.bbd.pointscalculator.model.RequestHealthChecks;
 
 @RestController
 @RequestMapping("/vitality")
