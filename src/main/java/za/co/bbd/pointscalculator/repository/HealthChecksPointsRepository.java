@@ -12,12 +12,12 @@ public interface HealthChecksPointsRepository extends CrudRepository<HealthCheck
     // change your query to what you need to query. Look at JPQL not SQL
     // create a function to fetch your data
 
-    @Query("SELECT t FROM HEALTH_CHECK t")
+    @Query("SELECT t FROM HEALTH_CHECKS t")
     List<HealthChecksDTO> getAllPoints();
     // TODO: Match this with the Fitness Example
 
-    @Query("SELECT t FROM HEALTH_CHECK t WHERE LOWER(t.check) = Lower(check)")
-    HealthChecksDTO getCheckPoints(@Param("check") String check);
+    @Query("SELECT t FROM HEALTH_CHECKS t WHERE LOWER(t.checkName) = Lower(:checkName)")
+    HealthChecksDTO getCheckPoints(@Param("checkName") String checkName);
 
     // FitnessPointsDTO getActivityPoints(@Param("activity") String activity);
 

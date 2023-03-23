@@ -13,6 +13,6 @@ public class HealthChecksDTO {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
-    private String check;
+    private String checkName;
     private int points;
 }
