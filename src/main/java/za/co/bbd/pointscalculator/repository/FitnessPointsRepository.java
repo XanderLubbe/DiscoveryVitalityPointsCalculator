@@ -3,6 +3,7 @@ package za.co.bbd.pointscalculator.repository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import org.springframework.data.repository.query.Param;
 import za.co.bbd.pointscalculator.model.FitnessPointsDTO;
 
 import java.util.List;
@@ -12,5 +13,8 @@ public interface FitnessPointsRepository extends CrudRepository<FitnessPointsDTO
     // create a function to fetch your data
     @Query ("SELECT t FROM FITNESS_POINTS t")
     List<FitnessPointsDTO> getAllPoints();
+
+    @Query ("SELECT t FROM FITNESS_POINTS t WHERE LOWER(t.activity) = LOWER(:activity)")
+    FitnessPointsDTO getActivityPoints(@Param("activity") String activity);
     
 }
