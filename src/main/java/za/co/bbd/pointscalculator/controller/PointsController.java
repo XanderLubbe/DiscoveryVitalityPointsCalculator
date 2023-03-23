@@ -46,7 +46,7 @@ public class PointsController {
 
     // To test HealthCheck service
     @GetMapping("/healthCheck")
-    ResponsePoints findHealthPoints(@RequestParam RequestHealthChecks requestHealthChecks) {
+    ResponsePoints findHealthPoints(RequestHealthChecks requestHealthChecks) {
         return healthService.findHealthCheckPointsService(requestHealthChecks);
     }
 

@@ -18,8 +18,8 @@ public class HealthCheckService {
     }
 
     public ResponsePoints findHealthCheckPointsService(RequestHealthChecks requestHealthChecks) {
-
-        HealthCheck repoHealthCheck = repository.findHealthCheckPoints(requestHealthChecks.isVitalityAge(),
+        HealthCheck repoHealthCheck = repository.findHealthCheckPoints(
+                requestHealthChecks.isVitalityAge(),
                 requestHealthChecks.getMentalWellbeing(),
                 requestHealthChecks.getGolfPlayed(),
                 requestHealthChecks.isFluVaccine(),
