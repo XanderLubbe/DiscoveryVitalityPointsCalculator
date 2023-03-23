@@ -13,22 +13,23 @@ import za.co.bbd.pointscalculator.service.FitnessService;
 import za.co.bbd.pointscalculator.service.HealthyFoodsService;
 import za.co.bbd.pointscalculator.service.AggregatorService;
 import za.co.bbd.pointscalculator.service.HealthCheckService;
+import za.co.bbd.pointscalculator.model.RequestHealthChecks;
 
 @RestController
 @RequestMapping("/vitality")
-public class PointsController{
+public class PointsController {
 
     private final HealthCheckService healthService;
     private final HealthyFoodsService foodService;
     private final AggregatorService service;
     private final FitnessService fitnessService;
 
-    PointsController(AggregatorService service, HealthyFoodsService foodService, FitnessService fitnessService, HealthCheckService healthService){
+    PointsController(AggregatorService service, HealthyFoodsService foodService, FitnessService fitnessService,
+            HealthCheckService healthService) {
         this.service = service;
         this.foodService = foodService;
         this.fitnessService = fitnessService;
         this.healthService = healthService;
-
 
     }
 
@@ -39,59 +40,25 @@ public class PointsController{
     }
 
     @GetMapping("/points/fitness")
-    ResponsePoints getFitnessPoints( RequestFitness requestFitness){
+    ResponsePoints getFitnessPoints(RequestFitness requestFitness) {
         return fitnessService.calculateFitnessPoints(requestFitness);
     }
 
-
-    //To test HealthCheck service
+    // To test HealthCheck service
     @GetMapping("/healthCheck")
-    ResponsePoints findHealthPoints(    @RequestParam 
-                                        boolean vitalityAge,
-                                        int mentalWellbeing,
-                                        int golfPlayed,
-                                        boolean fluVaccine,
-                                        boolean initialHIVTest,
-                                        boolean annualHIVTest,
-                                        boolean papSmear,
-                                        boolean mammogram,
-                                        boolean colonoscopy,
-                                        boolean dentalCheck,
-                                        boolean glaucomaScreening,
-                                        boolean managingChronicCondition,
-                                        boolean bloodPressure,
-                                        boolean bloodGlucose,
-                                        boolean cholestrol,
-                                        boolean weightAssesment,
-                                        boolean nonSmokersDeclaration ){
-        return healthService.findHealthCheckPointsService(  vitalityAge,
-                                                             mentalWellbeing,
-                                                             golfPlayed,
-                                                             fluVaccine,
-                                                             initialHIVTest,
-                                                             annualHIVTest,
-                                                             papSmear,
-                                                             mammogram,
-                                                             colonoscopy,
-                                                             dentalCheck,
-                                                             glaucomaScreening,
-                                                             managingChronicCondition,
-                                                             bloodPressure,
-                                                             bloodGlucose,
-                                                             cholestrol,
-                                                             weightAssesment,
-                                                             nonSmokersDeclaration);
+    ResponsePoints findHealthPoints(@RequestParam RequestHealthChecks requestHealthChecks) {
+        return healthService.findHealthCheckPointsService(requestHealthChecks);
     }
 
-
-    // this works by binding query params to objects 
+    // this works by binding query params to objects
     @GetMapping("/testObject")
-    List<ResponsePoints> requestPoints(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
+    List<ResponsePoints> requestPoints(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks,
+            RequestFitness requestFitness) {
         System.out.println(requestHealthyFoods.isVisitedDietician());
         System.out.println(requestHealthyFoods.getHealthyFoodSpend());
         System.out.println(requestHealthChecks.isBloodGlucose());
         System.out.println(requestFitness.getCyclingRaceEventLevel1());
-  
+
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
 
@@ -99,7 +66,8 @@ public class PointsController{
     }
 
     @GetMapping("/points")
-    List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
+    List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks,
+            RequestFitness requestFitness) {
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
         System.out.println(String.format("Congratulations you have %s points!", result));
@@ -108,9 +76,10 @@ public class PointsController{
     }
 
     @GetMapping("/bands")
-    String bands(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
+    String bands(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks,
+            RequestFitness requestFitness) {
         String result = (service.getVitalityBandService(requestHealthyFoods, requestHealthChecks, requestFitness));
-        System.out.println(String.format("Hello you are on the %s band!", result)); 
+        System.out.println(String.format("Hello you are on the %s band!", result));
 
         return result;
     }
