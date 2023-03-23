@@ -38,6 +38,7 @@ public class PointsController {
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(aggregatorService.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
 
+
         return result;
     }
 
