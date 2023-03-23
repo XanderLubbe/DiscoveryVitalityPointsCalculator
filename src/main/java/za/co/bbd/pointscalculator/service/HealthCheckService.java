@@ -19,23 +19,23 @@ public class HealthCheckService {
 
     public ResponsePoints findHealthCheckPointsService(RequestHealthChecks requestHealthChecks) {
         HealthCheck repoHealthCheck = repository.findHealthCheckPoints(
-                requestHealthChecks.isVitalityAge(),
-                requestHealthChecks.getMentalWellbeing(),
-                requestHealthChecks.getGolfPlayed(),
-                requestHealthChecks.isFluVaccine(),
-                requestHealthChecks.isInitialHIVTest(),
-                requestHealthChecks.isAnnualHIVTest(),
-                requestHealthChecks.isPapSmear(),
-                requestHealthChecks.isMammogram(),
-                requestHealthChecks.isColonoscopy(),
-                requestHealthChecks.isDentalCheck(),
-                requestHealthChecks.isGlaucomaScreening(),
-                requestHealthChecks.isManagingChronicCondition(),
-                requestHealthChecks.isBloodPressure(),
-                requestHealthChecks.isBloodGlucose(),
-                requestHealthChecks.isCholestrol(),
-                requestHealthChecks.isWeightAssesment(),
-                requestHealthChecks.isNonSmokersDeclaration());
+                requestHealthChecks.vitalityAge(),
+                requestHealthChecks.mentalWellbeing(),
+                requestHealthChecks.golfPlayed(),
+                requestHealthChecks.fluVaccine(),
+                requestHealthChecks.initialHIVTest(),
+                requestHealthChecks.annualHIVTest(),
+                requestHealthChecks.papSmear(),
+                requestHealthChecks.mammogram(),
+                requestHealthChecks.colonoscopy(),
+                requestHealthChecks.dentalCheck(),
+                requestHealthChecks.glaucomaScreening(),
+                requestHealthChecks.managingChronicCondition(),
+                requestHealthChecks.bloodPressure(),
+                requestHealthChecks.bloodGlucose(),
+                requestHealthChecks.cholestrol(),
+                requestHealthChecks.weightAssesment(),
+                requestHealthChecks.nonSmokersDeclaration());
 
         int returned_vitalityAgePoints = repoHealthCheck.vitalityAgePoints();
         int returned_mentalWellbeing = repoHealthCheck.mentalWellbeingPoints();
