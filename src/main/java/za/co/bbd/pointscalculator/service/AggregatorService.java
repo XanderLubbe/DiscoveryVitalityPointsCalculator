@@ -33,7 +33,7 @@ public class AggregatorService {
     }
 
     public ResponsePoints getTotalVitalityPointsService(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
-        ResponsePoints foodPoints = healthyFoodService.findFoodPointsService(requestHealthyFoods.isVisitedDietician(), requestHealthyFoods.getHealthyFoodSpend());
+        ResponsePoints foodPoints = healthyFoodService.findFoodPointsService(requestHealthyFoods);
         ResponsePoints fitnessPoints = fitnessService.calculateFitnessPoints(requestFitness) ;
 //        ResponsePoints healthCheckPoints = healthCheckService.findHealthCheckPointsService();
         int result = foodPoints.getPoints() + fitnessPoints.getPoints();
