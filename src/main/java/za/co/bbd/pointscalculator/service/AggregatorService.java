@@ -24,7 +24,7 @@ public class AggregatorService {
     }
 
     public String getVitalityBandService(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness) {
-        ResponsePoints totalPoints = this.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness);
+        ResponsePoints totalPoints = getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness);
         int result = totalPoints.getPoints();
         String bandResult = vitalityBandService.getBand(result);
 

@@ -33,9 +33,9 @@ public class PointsController{
     }
 
     @GetMapping("/foodPoints")
-    ResponsePoints findFoodPoints(@RequestParam boolean dietitianVisit, int healthyFoodPerMonth) {
+    ResponsePoints findFoodPoints(@RequestParam RequestHealthyFoods healthyFoodsRequest) {
 
-        return foodService.findFoodPointsService(dietitianVisit, healthyFoodPerMonth);
+        return foodService.findFoodPointsService(healthyFoodsRequest);
     }
 
     @GetMapping("/fitnessPoints")
@@ -148,7 +148,7 @@ public class PointsController{
     List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(service.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
-        System.out.println(String.format("Congratulations you have %s points!", result)); 
+        System.out.println(String.format("Congratulations you have %s points!", result));
 
         return result;
     }
