@@ -21,7 +21,7 @@ public class HealthyFoodsService {
     }
 
     public ResponsePoints findFoodPointsService(RequestHealthyFoods healthyFoodsRequest){
-        HealthyfoodDTO repoFoods = repository.findFoodPerMonth(healthyFoodsRequest.getHealthyFoodSpend());
+        HealthyfoodDTO repoFoods = repository.findFoodPerMonth(healthyFoodsRequest.healthyFoodSpend());
         int returnedDietitianPoints = this.dietitianPoints;
         int returnedFoodPoints = repoFoods.getPoints();
         return new ResponsePoints(returnedFoodPoints + returnedDietitianPoints);

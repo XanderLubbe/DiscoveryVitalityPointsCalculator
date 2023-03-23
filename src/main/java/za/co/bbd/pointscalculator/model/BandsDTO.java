@@ -7,12 +7,10 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 
 @Entity(name="VITALITY_BANDS")
-@Getter
-public class BandsDTO {
-    @Id @GeneratedValue(strategy = GenerationType.AUTO) private Long Id;
-    private int lowerLimit;
-    private int upperLimit;
-    private String band;
-}
+public record BandsDTO(
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)  Long Id,
+    int lowerLimit,
+    int upperLimit,
+    String band){}
 
 

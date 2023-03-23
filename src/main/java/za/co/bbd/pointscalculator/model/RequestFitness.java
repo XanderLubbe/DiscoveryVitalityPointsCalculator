@@ -3,39 +3,33 @@ package za.co.bbd.pointscalculator.model;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
-@Getter
-public class RequestFitness {
+public record RequestFitness (
     
     // General fitness activities
-    private int walking5000PlusSteps;
-    private int walking10000PlusSteps;
-    private int onlineWorkout;
-    private int speedWorkout;
-    private int lightWorkout;
-    private int moderateWorkout30Min;
-    private int moderateWorkout60Min;
-    private int vigorousWorkout;
-    private int parkrun;
+    int walking5000PlusSteps,
+    int walking10000PlusSteps,
+    int onlineWorkout,
+    int speedWorkout,
+    int lightWorkout,
+    int moderateWorkout30Min,
+    int moderateWorkout60Min,
+    int vigorousWorkout,
+    int parkrun,
 
     // Race Events
-    private int walkingOrRunningRaceEventLevel1;
-    private int walkingOrRunningRaceEventLevel2;
-    private int walkingOrRunningRaceEventLevel3;
-    private int walkingOrRunningRaceEventLevel4;
+    int walkingOrRunningRaceEventLevel1,
+    int walkingOrRunningRaceEventLevel2,
+    int walkingOrRunningRaceEventLevel3,
+    int walkingOrRunningRaceEventLevel4,
 
-    private int swimmingRaceEventLevel1;
-    private int swimmingRaceEventLevel2;
-    private int swimmingRaceEventLevel3;
-    private int swimmingRaceEventLevel4;
+    int swimmingRaceEventLevel1,
+    int swimmingRaceEventLevel2,
+    int swimmingRaceEventLevel3,
+    int swimmingRaceEventLevel4,
 
-    private int cyclingRaceEventLevel1;
-    private int cyclingRaceEventLevel2;
-    private int cyclingRaceEventLevel3;
-    private int cyclingRaceEventLevel4;
+    int cyclingRaceEventLevel1,
+    int cyclingRaceEventLevel2,
+    int cyclingRaceEventLevel3,
+    int cyclingRaceEventLevel4
 
-    // public RequestFitness(int cyclingRaceEventLevel1){
-    //     this.cyclingRaceEventLevel1 = cyclingRaceEventLevel1;
-    // }
-    
-}
+){}
