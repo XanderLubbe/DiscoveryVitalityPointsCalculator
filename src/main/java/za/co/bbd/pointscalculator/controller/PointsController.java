@@ -33,11 +33,8 @@ public class PointsController {
 
     @GetMapping("/points")
     List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
-        String bandResult = bandsRepository.findVitalityBand(40000).getBand();
-        System.out.println(bandResult);
         List<ResponsePoints> result = new ArrayList<ResponsePoints>();
         result.add(aggregatorService.getTotalVitalityPointsService(requestHealthyFoods, requestHealthChecks, requestFitness));
-
 
         return result;
     }
