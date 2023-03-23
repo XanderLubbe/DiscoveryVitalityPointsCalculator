@@ -52,21 +52,6 @@ public class HealthCheckService {
         int returned_vitalityCheckPoints = repoHealthCheck.vitalityCheckPoints();
         int returned_aboveLimitFix = repoHealthCheck.aboveLimitFix();
 
-        int[] totalPoints = { returned_vitalityAgePoints,
-                returned_mentalWellbeing,
-                returned_golfPlayed,
-                returned_fluVaccine,
-                returned_initialHIVTest,
-                returned_annualHIVTest,
-                returned_papSmear,
-                returned_mammogram,
-                returned_colonoscopy,
-                returned_dentalCheck,
-                returned_glaucomaScreening,
-                returned_managingChronicCondition,
-                returned_vitalityCheckPoints,
-                returned_aboveLimitFix };
-
         return new ResponsePoints(returned_vitalityAgePoints +
                 returned_mentalWellbeing +
                 returned_golfPlayed +
