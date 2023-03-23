@@ -1,56 +1,42 @@
 package za.co.bbd.pointscalculator.service;
+
 import org.json.JSONObject;
 
 import org.springframework.stereotype.Service;
 import za.co.bbd.pointscalculator.model.ResponsePoints;
 import za.co.bbd.pointscalculator.model.HealthCheck;
+import za.co.bbd.pointscalculator.model.RequestHealthChecks;
 import za.co.bbd.pointscalculator.repository.PointsObjectRepository;
 
 @Service
 public class HealthCheckService {
-    
+
     private final PointsObjectRepository repository;
 
-    HealthCheckService(PointsObjectRepository repository){
+    HealthCheckService(PointsObjectRepository repository) {
         this.repository = repository;
     }
 
-    public ResponsePoints findHealthCheckPointsService( boolean vitalityAge,
-                                                        int mentalWellbeing,
-                                                        int golfPlayed,
-                                                        boolean fluVaccine,
-                                                        boolean initialHIVTest,
-                                                        boolean annualHIVTest,
-                                                        boolean papSmear,
-                                                        boolean mammogram,
-                                                        boolean colonoscopy,
-                                                        boolean dentalCheck,
-                                                        boolean glaucomaScreening,
-                                                        boolean managingChronicCondition,
-                                                        boolean bloodPressure,
-                                                        boolean bloodGlucose,
-                                                        boolean cholestrol,
-                                                        boolean weightAssesment,
-                                                        boolean nonSmokersDeclaration)
-    {
-        HealthCheck repoHealthCheck = repository.findHealthCheckPoints( vitalityAge,
-                                                                        mentalWellbeing,
-                                                                        golfPlayed,
-                                                                        fluVaccine,
-                                                                        initialHIVTest,
-                                                                        annualHIVTest,
-                                                                        papSmear,
-                                                                        mammogram,
-                                                                        colonoscopy,
-                                                                        dentalCheck,
-                                                                        glaucomaScreening,
-                                                                        managingChronicCondition,
-                                                                        bloodPressure,
-                                                                        bloodGlucose,
-                                                                        cholestrol,
-                                                                        weightAssesment,
-                                                                        nonSmokersDeclaration);
-        
+    public ResponsePoints findHealthCheckPointsService(RequestHealthChecks requestHealthChecks) {
+        HealthCheck repoHealthCheck = repository.findHealthCheckPoints(
+                requestHealthChecks.isVitalityAge(),
+                requestHealthChecks.getMentalWellbeing(),
+                requestHealthChecks.getGolfPlayed(),
+                requestHealthChecks.isFluVaccine(),
+                requestHealthChecks.isInitialHIVTest(),
+                requestHealthChecks.isAnnualHIVTest(),
+                requestHealthChecks.isPapSmear(),
+                requestHealthChecks.isMammogram(),
+                requestHealthChecks.isColonoscopy(),
+                requestHealthChecks.isDentalCheck(),
+                requestHealthChecks.isGlaucomaScreening(),
+                requestHealthChecks.isManagingChronicCondition(),
+                requestHealthChecks.isBloodPressure(),
+                requestHealthChecks.isBloodGlucose(),
+                requestHealthChecks.isCholestrol(),
+                requestHealthChecks.isWeightAssesment(),
+                requestHealthChecks.isNonSmokersDeclaration());
+
         int returned_vitalityAgePoints = repoHealthCheck.vitalityAgePoints();
         int returned_mentalWellbeing = repoHealthCheck.mentalWellbeingPoints();
         int returned_golfPlayed = repoHealthCheck.golfPlayedPoints();
@@ -66,37 +52,35 @@ public class HealthCheckService {
         int returned_vitalityCheckPoints = repoHealthCheck.vitalityCheckPoints();
         int returned_aboveLimitFix = repoHealthCheck.aboveLimitFix();
 
-        int[] totalPoints =   {returned_vitalityAgePoints ,
-                            returned_mentalWellbeing ,
-                            returned_golfPlayed ,
-                            returned_fluVaccine ,
-                            returned_initialHIVTest ,
-                            returned_annualHIVTest ,
-                            returned_papSmear ,
-                            returned_mammogram ,
-                            returned_colonoscopy ,
-                            returned_dentalCheck ,
-                            returned_glaucomaScreening ,
-                            returned_managingChronicCondition ,
-                            returned_vitalityCheckPoints,
-                            returned_aboveLimitFix};
+        int[] totalPoints = { returned_vitalityAgePoints,
+                returned_mentalWellbeing,
+                returned_golfPlayed,
+                returned_fluVaccine,
+                returned_initialHIVTest,
+                returned_annualHIVTest,
+                returned_papSmear,
+                returned_mammogram,
+                returned_colonoscopy,
+                returned_dentalCheck,
+                returned_glaucomaScreening,
+                returned_managingChronicCondition,
+                returned_vitalityCheckPoints,
+                returned_aboveLimitFix };
 
-
-        return new ResponsePoints(  returned_vitalityAgePoints +
-                                    returned_mentalWellbeing +
-                                    returned_golfPlayed +
-                                    returned_fluVaccine +
-                                    returned_initialHIVTest +
-                                    returned_annualHIVTest +
-                                    returned_papSmear +
-                                    returned_mammogram +
-                                    returned_colonoscopy +
-                                    returned_dentalCheck +
-                                    returned_glaucomaScreening +
-                                    returned_managingChronicCondition +
-                                    returned_vitalityCheckPoints+
-                                    returned_aboveLimitFix
-        );
+        return new ResponsePoints(returned_vitalityAgePoints +
+                returned_mentalWellbeing +
+                returned_golfPlayed +
+                returned_fluVaccine +
+                returned_initialHIVTest +
+                returned_annualHIVTest +
+                returned_papSmear +
+                returned_mammogram +
+                returned_colonoscopy +
+                returned_dentalCheck +
+                returned_glaucomaScreening +
+                returned_managingChronicCondition +
+                returned_vitalityCheckPoints +
+                returned_aboveLimitFix);
     }
 
 }
