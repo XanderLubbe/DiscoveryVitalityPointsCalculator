@@ -2,21 +2,28 @@ package za.co.bbd.pointscalculator.service;
 
 import org.springframework.stereotype.Service;
 import za.co.bbd.pointscalculator.model.HealthyFoods;
+import za.co.bbd.pointscalculator.model.HealthyfoodDTO;
 import za.co.bbd.pointscalculator.model.RequestHealthyFoods;
 import za.co.bbd.pointscalculator.model.ResponsePoints;
+import za.co.bbd.pointscalculator.repository.HealthyfoodPointsRepository;
 import za.co.bbd.pointscalculator.repository.PointsObjectRepository;
 
 @Service
 public class HealthyFoodsService {
 
-    private final PointsObjectRepository repository;
+    private final HealthyfoodPointsRepository repository;
+    private final int dietitianPoints ;
 
-    HealthyFoodsService(PointsObjectRepository repository){this.repository = repository;}
+    HealthyFoodsService(HealthyfoodPointsRepository repository)
+    {
+        this.repository = repository;
+        this.dietitianPoints = 1000;
+    }
 
     public ResponsePoints findFoodPointsService(RequestHealthyFoods healthyFoodsRequest){
-        HealthyFoods repoFoods = repository.findFoodPoints(healthyFoodsRequest.isVisitedDietician(), healthyFoodsRequest.getHealthyFoodSpend());
-        int returnedDietitianPoints = repoFoods.dietitianPoints();
-        int returnedFoodPoints = repoFoods.foodPoints();
+        HealthyfoodDTO repoFoods = repository.findFoodPerMonth(healthyFoodsRequest.getHealthyFoodSpend());
+        int returnedDietitianPoints = this.dietitianPoints;
+        int returnedFoodPoints = repoFoods.getPoints();
         return new ResponsePoints(returnedFoodPoints + returnedDietitianPoints);
     }
 }

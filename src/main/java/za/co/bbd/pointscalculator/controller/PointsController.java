@@ -33,7 +33,7 @@ public class PointsController{
     }
 
     @GetMapping("/foodPoints")
-    ResponsePoints findFoodPoints(@RequestParam RequestHealthyFoods healthyFoodsRequest) {
+    ResponsePoints findFoodPoints( RequestHealthyFoods healthyFoodsRequest) {
 
         return foodService.findFoodPointsService(healthyFoodsRequest);
     }
