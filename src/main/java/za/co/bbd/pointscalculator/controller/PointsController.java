@@ -43,6 +43,11 @@ public class PointsController{
         return fitnessService.calculateFitnessPoints(requestFitness);
     }
 
+    @GetMapping("/points/fitness2")
+    ResponsePoints getFitnessPoints2( RequestFitness requestFitness){
+        return fitnessService.calculateFitnessPoints2(requestFitness);
+    }
+
 
     //To test HealthCheck service
     @GetMapping("/healthCheck")
