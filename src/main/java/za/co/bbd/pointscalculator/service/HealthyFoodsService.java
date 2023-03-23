@@ -1,12 +1,10 @@
 package za.co.bbd.pointscalculator.service;
 
 import org.springframework.stereotype.Service;
-import za.co.bbd.pointscalculator.model.HealthyFoods;
 import za.co.bbd.pointscalculator.model.HealthyfoodDTO;
 import za.co.bbd.pointscalculator.model.RequestHealthyFoods;
 import za.co.bbd.pointscalculator.model.ResponsePoints;
 import za.co.bbd.pointscalculator.repository.HealthyfoodPointsRepository;
-import za.co.bbd.pointscalculator.repository.PointsObjectRepository;
 
 @Service
 public class HealthyFoodsService {
