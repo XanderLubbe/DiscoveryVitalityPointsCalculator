@@ -14,14 +14,13 @@ import za.co.bbd.pointscalculator.service.HealthCheckService;
 
 @RestController
 @RequestMapping("/vitality")
-public class PointsController{
+public class PointsController {
 
     private final HealthCheckService healthService;
     private final HealthyFoodsService foodService;
     private final FitnessService fitnessService;
     private final BandsRepository bandsRepository;
     private final AggregatorService aggregatorService;
-
 
     PointsController( HealthCheckService healthService, HealthyFoodsService foodService, FitnessService fitnessService, BandsRepository bandsRepository, AggregatorService service){
         this.healthService = healthService;
@@ -30,6 +29,7 @@ public class PointsController{
         this.bandsRepository = bandsRepository;
         this.aggregatorService = service;
     }
+
 
     @GetMapping("/points")
     List<ResponsePoints> points(RequestHealthyFoods requestHealthyFoods, RequestHealthChecks requestHealthChecks, RequestFitness requestFitness){
@@ -47,49 +47,17 @@ public class PointsController{
     }
 
     @GetMapping("/points/fitness")
-    ResponsePoints getFitnessPoints( RequestFitness requestFitness){
+    ResponsePoints getFitnessPoints(RequestFitness requestFitness) {
         return fitnessService.calculateFitnessPoints(requestFitness);
     }
 
-    //To test HealthCheck service
-    @GetMapping("/healthCheck")
-    ResponsePoints findHealthPoints(    @RequestParam 
-                                        boolean vitalityAge,
-                                        int mentalWellbeing,
-                                        int golfPlayed,
-                                        boolean fluVaccine,
-                                        boolean initialHIVTest,
-                                        boolean annualHIVTest,
-                                        boolean papSmear,
-                                        boolean mammogram,
-                                        boolean colonoscopy,
-                                        boolean dentalCheck,
-                                        boolean glaucomaScreening,
-                                        boolean managingChronicCondition,
-                                        boolean bloodPressure,
-                                        boolean bloodGlucose,
-                                        boolean cholestrol,
-                                        boolean weightAssesment,
-                                        boolean nonSmokersDeclaration ){
-        return healthService.findHealthCheckPointsService(  vitalityAge,
-                                                             mentalWellbeing,
-                                                             golfPlayed,
-                                                             fluVaccine,
-                                                             initialHIVTest,
-                                                             annualHIVTest,
-                                                             papSmear,
-                                                             mammogram,
-                                                             colonoscopy,
-                                                             dentalCheck,
-                                                             glaucomaScreening,
-                                                             managingChronicCondition,
-                                                             bloodPressure,
-                                                             bloodGlucose,
-                                                             cholestrol,
-                                                             weightAssesment,
-                                                             nonSmokersDeclaration);
-    }
 
+    //To test HealthCheck service
+
+    @GetMapping("/healthCheck")
+    ResponsePoints findHealthPoints(RequestHealthChecks requestHealthChecks) {
+        return healthService.findHealthCheckPointsService(requestHealthChecks);
+    }
 
 
     @GetMapping("/bands")
