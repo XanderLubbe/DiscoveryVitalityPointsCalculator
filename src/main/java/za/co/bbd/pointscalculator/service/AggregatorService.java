@@ -2,8 +2,6 @@ package za.co.bbd.pointscalculator.service;
 
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 import za.co.bbd.pointscalculator.model.*;
 import za.co.bbd.pointscalculator.repository.FitnessPointsRepository;
 
