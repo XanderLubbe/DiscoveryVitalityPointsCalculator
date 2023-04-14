@@ -19,14 +19,12 @@ public class PointsController {
     private final HealthCheckService healthService;
     private final HealthyFoodsService foodService;
     private final FitnessService fitnessService;
-    private final BandsRepository bandsRepository;
     private final AggregatorService aggregatorService;
 
-    PointsController( HealthCheckService healthService, HealthyFoodsService foodService, FitnessService fitnessService, BandsRepository bandsRepository, AggregatorService service){
+    PointsController( HealthCheckService healthService, HealthyFoodsService foodService, FitnessService fitnessService, AggregatorService service){
         this.healthService = healthService;
         this.foodService = foodService;
         this.fitnessService = fitnessService;
-        this.bandsRepository = bandsRepository;
         this.aggregatorService = service;
     }
 
